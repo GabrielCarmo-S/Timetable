@@ -20,5 +20,8 @@ Route::get('/', function () {
 
 Route::prefix('users')->group(function () {
     Route::get('/listar', [UserController::class, 'get'])->name('users.get');
+    Route::get('{id}/detalhar', [UserController::class, 'getUserById'])->name('users.getUserById');
     Route::post('/incluir', [UserController::class, 'create'])->name('users.create');
+    Route::put('/alterar', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/excluir', [UserController::class, 'delete'])->name('users.delete');
 });

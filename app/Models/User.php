@@ -20,8 +20,23 @@ class User extends Model
         'created_at',
     ];
 
+    public function getUsers()
+    {
+        return User::get();
+    }
+
+    public function getUserById($id)
+    {
+        return User::find($id);
+    }
+
     public static function createUser($data)
     {
-        User::create($data);
+        return User::create($data);
+    }
+
+    public static function updateUser($data, $id)
+    {
+        return User::where("user_id", $id)->update($data);
     }
 }

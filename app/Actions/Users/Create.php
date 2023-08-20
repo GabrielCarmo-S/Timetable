@@ -7,14 +7,14 @@ use Illuminate\Support\Facades\Hash;
 
 class Create
 {
-    public  static function handle($userData, $response)
+    public  static function handle($data, $response)
     {
         try {
             User::createUser([
-                'user_name' => $userData->user_name,
-                'user_email' => $userData->user_email,
-                'user_password' => Hash::make($userData->user_password),
-                'user_level' => $userData->user_level
+                'user_name' => $data->user_name,
+                'user_email' => $data->user_email,
+                'user_password' => Hash::make($data->user_password),
+                'user_level' => $data->user_level
             ]);
 
             return $response->send(true, null, 'Sucesso ao cadastrar usuário', []);
