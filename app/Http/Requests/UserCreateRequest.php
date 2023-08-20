@@ -10,7 +10,7 @@ class UserCreateRequest extends DefaultRequest
         return [
             'user_name.required'         => 'Obrigatório.',
             'user_name.min'              => 'Minímo de 10 caracteres.',
-            'user_name.max'              => 'Máximo 255 de caracteres.',
+            'user_name.max'              => 'Máximo 150 de caracteres.',
 
             'user_email.required'        => 'Obrigatório.',
             'user_email.email'           => 'Precisa ser uma email válido.',
