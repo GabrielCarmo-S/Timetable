@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class CouseCreateRequest extends DefaultRequest
+class CourseCreateRequest extends DefaultRequest
 {
 
     public function setMessages()

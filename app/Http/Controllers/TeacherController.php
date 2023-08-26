@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Courses\Create;
-use App\Actions\Courses\Delete;
-use App\Actions\Courses\Update;
-use App\Http\Requests\CourseCreateRequest;
-use App\Models\Course;
+use App\Actions\Teachers\Create;
+use App\Actions\Teachers\Delete;
+use App\Actions\Teachers\Update;
+use App\Http\Requests\TeacherCreateRequest;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
-class CourseController extends TimetableDefaultController
+class TeacherController extends TimetableDefaultController
 {
     public function construct()
     {
@@ -18,30 +18,30 @@ class CourseController extends TimetableDefaultController
     public function get(Request $request)
     {
         try {
-            $course = new Course();
+            $teacher = new Teacher();
 
-            $data = $course->getCourse();
+            $data = $teacher->getTeacher();
 
-            return $this->response->send(true, $data->toJson(), 'Cursos Encontrados com sucesso!', null);
+            return $this->response->send(true, $data->toJson(), 'Professores Encontrados com sucesso!', null);
         } catch (\Throwable $th) {
-            return $this->response->send(false, null, 'Erro ao buscar cursos', $th->getMessage());
+            return $this->response->send(false, null, 'Erro ao buscar os professores', $th->getMessage());
         }
     }
 
-    public function getCourseById($id)
+    public function getTeacherById($id)
     {
         try {
-            $course = new Course();
+            $teacher = new Teacher();
 
-            $data = $course->getCourseById($id);
+            $data = $teacher->getTeacherById($id);
 
-            return $this->response->send(true, $data, 'Curso Encontrado com sucesso!', null);
+            return $this->response->send(true, $data, 'Professor Encontrado com sucesso!', null);
         } catch (\Throwable $th) {
-            return $this->response->send(false, null, 'Erro ao buscar curso', $th->getMessage());
+            return $this->response->send(false, null, 'Erro ao buscar o professor', $th->getMessage());
         }
     }
 
-    public function create(CourseCreateRequest $request)
+    public function create(TeacherCreateRequest $request)
     {
         try {
             $data = Create::handle($request, $this->response);
@@ -52,7 +52,7 @@ class CourseController extends TimetableDefaultController
 
             return $this->response->send(true, null, $data->message, $data->errors);
         } catch (\Throwable $th) {
-            return $this->response->send(false, null, 'Erro ao cadastrar curso', $th->getMessage());
+            return $this->response->send(false, null, 'Erro ao cadastrar professor', $th->getMessage());
         }
     }
 
@@ -67,7 +67,7 @@ class CourseController extends TimetableDefaultController
 
             return $this->response->send(true, null, $data->message, $data->errors);
         } catch (\Throwable $th) {
-            return $this->response->send(false, null, 'Erro ao atualizar curso', $th->getMessage());
+            return $this->response->send(false, null, 'Erro ao atualizar professor', $th->getMessage());
         }
     }
 
@@ -82,7 +82,7 @@ class CourseController extends TimetableDefaultController
 
             return $this->response->send(true, null, $data->message, $data->errors);
         } catch (\Throwable $th) {
-            return $this->response->send(false, null, 'Erro ao deletar curso', $th->getMessage());
+            return $this->response->send(false, null, 'Erro ao deletar professor', $th->getMessage());
         }
     }
 }
