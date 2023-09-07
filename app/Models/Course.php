@@ -13,6 +13,8 @@ class Course extends Model
     protected $primaryKey = 'course_id';
     protected $fillable = [
         'course_name',
+        'updated_at',
+        'created_at',
     ];
 
     public function getCourse()
