@@ -1,6 +1,11 @@
                     <div class="card shadow mb-4">
-                      <div class="card-header py-3">
+                      <div class="d-flex align-items-center justify-content-between card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">{{ $tableTitle }}</h6>
+
+                        <button class="btn btn-success" title="Adicionar" type="button" data-toggle="modal"
+                          data-target="#cadastrar">
+                          <i class="fas fa-plus"></i>
+                        </button>
                       </div>
                       <div class="card-body">
                         <div class="table-responsive">
