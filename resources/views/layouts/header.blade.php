@@ -13,4 +13,8 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+  <link href="{{ asset('libs/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
+  <script src="{{ asset('libs/jquery/jquery.min.js') }}"></script>
 </head>

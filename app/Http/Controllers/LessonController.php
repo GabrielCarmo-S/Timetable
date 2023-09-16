@@ -17,16 +17,15 @@ class LessonController extends TimetableDefaultController
 
     public function get(Request $request)
     {
-        return view('licoes.index', ['title' => 'TimeTable - Lições', 'titleContent' => 'Listagem - Lições']);
-        // try {
-        //     $lesson = new Lesson();
+        try {
+            $lesson = new Lesson();
 
-        //     $data = $lesson->getLesson();
+            $data = $lesson->getLesson();
 
-        //     return $this->response->send(true, $data->toJson(), 'Lições Encontrados com sucesso!', null);
-        // } catch (\Throwable $th) {
-        //     return $this->response->send(false, null, 'Erro ao buscar lições', $th->getMessage());
-        // }
+            return view('licoes.index', ['title' => 'TimeTable - Lições', 'titleContent' => 'Listagem - Lições', 'data' => $data]);
+        } catch (\Throwable $th) {
+            return view('licoes.index', ['title' => 'TimeTable - Lições', 'titleContent' => 'Listagem - Lições', 'data' => []]);
+        }
     }
 
     public function getLessonById($id)

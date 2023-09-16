@@ -22,9 +22,9 @@ class CourseController extends TimetableDefaultController
 
             $data = $course->getCourse();
 
-            return $this->response->send(true, $data->toJson(), 'Cursos Encontrados com sucesso!', null);
+            return view('cursos.index', ['title' => 'TimeTable - Cursos', 'titleContent' => 'Listagem - Cursos', 'data' => $data]);
         } catch (\Throwable $th) {
-            return $this->response->send(false, null, 'Erro ao buscar cursos', $th->getMessage());
+            return view('cursos.index', ['title' => 'TimeTable - Cursos', 'titleContent' => 'Listagem - Cursos', 'data' => []]);
         }
     }
 

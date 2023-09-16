@@ -17,16 +17,15 @@ class TeacherController extends TimetableDefaultController
 
     public function get(Request $request)
     {
-        return view('professores.index', ['title' => 'TimeTable - Professores', 'titleContent' => 'Listagem - Professores']);
-        // try {
-        //     $teacher = new Teacher();
+        try {
+            $teacher = new Teacher();
 
-        //     $data = $teacher->getTeacher();
+            $data = $teacher->getTeacher();
 
-        //     return $this->response->send(true, $data->toJson(), 'Professores Encontrados com sucesso!', null);
-        // } catch (\Throwable $th) {
-        //     return $this->response->send(false, null, 'Erro ao buscar os professores', $th->getMessage());
-        // }
+            return view('professores.index', ['title' => 'TimeTable - Professores', 'titleContent' => 'Listagem - Professores', 'data' => $data]);
+        } catch (\Throwable $th) {
+            return view('professores.index', ['title' => 'TimeTable - Professores', 'titleContent' => 'Listagem - Professores', 'data' => []]);
+        }
     }
 
     public function getTeacherById($id)

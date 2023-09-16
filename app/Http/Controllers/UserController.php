@@ -17,16 +17,15 @@ class UserController extends TimetableDefaultController
 
     public function get(Request $request)
     {
-        return view('usuarios.index', ['title' => 'TimeTable - Usuários', 'titleContent' => 'Listagem - Usuários']);
-        // try {
-        //     $user = new User();
+        try {
+            $user = new User();
 
-        //     $data = $user->getUsers();
+            $data = $user->getUsers();
 
-        //     return $this->response->send(true, $data->toJson(), 'Usuarios Encontrados com sucesso!', null);
-        // } catch (\Throwable $th) {
-        //     return $this->response->send(false, null, 'Erro ao buscar usuários', $th->getMessage());
-        // }
+            return view('usuarios.index', ['title' => 'TimeTable - Usuários', 'titleContent' => 'Listagem - Usuários', 'data' => $data]);
+        } catch (\Throwable $th) {
+            return view('usuarios.index', ['title' => 'TimeTable - Usuários', 'titleContent' => 'Listagem - Usuários', 'data' => []]);
+        }
     }
 
     public function getUserById($id)

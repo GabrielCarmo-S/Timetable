@@ -24,7 +24,21 @@ class Lesson extends Model
 
     public function getLesson()
     {
-        return Lesson::get();
+        return Lesson::leftJoin('modules', 'modules.module_id', '=', 'lessons.module_id')
+            ->leftJoin('courses', 'courses.course_id', '=', 'modules.course_id')
+            ->leftJoin('lesson_teachers', 'lesson_teachers.lesson_id', '=', 'lessons.lesson_id')
+            ->leftJoin('teachers', 'teachers.teacher_id', '=', 'lesson_teachers.teacher_id')
+            ->select(
+                'lessons.lesson_id',
+                'lessons.lesson_name',
+                'lessons.is_mandatory',
+                'lessons.lesson_date',
+                'lessons.lesson_time',
+                'modules.module_name',
+                'courses.course_name',
+                'teachers.teacher_name'
+            )
+            ->get();
     }
 
     public function getLessonById($id)
