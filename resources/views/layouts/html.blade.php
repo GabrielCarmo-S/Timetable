@@ -3,6 +3,10 @@
 @include('layouts.header', ['title' => $title])
 
 <body id="page-top">
+  <div id="overlay">
+    <div class="loader"></div>
+  </div>
+
   <div id="wrapper">
     @include('layouts.sidebar')
 

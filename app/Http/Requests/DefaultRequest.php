@@ -33,7 +33,7 @@ abstract class DefaultRequest extends FormRequest
     {
         $errors = $validator->errors()->messages();
 
-        $response = $this->response->send(400, null, 'Erro de validação', $errors);
+        $response = $this->response->send(false, null, 'Erro de validação', $errors);
 
         throw new ValidationException($validator, response()->json($response, 400));
     }
