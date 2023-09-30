@@ -77,27 +77,32 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="row d-flex">
-            <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-              <label for="user_name">Nome</label>
-              <input type="text" name="user_name" id="user_name" class="form-control" required>
+          <form action="" id="form">
+            <div class="row d-flex">
+              <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                <label for="user_name">Nome</label>
+                <input type="text" name="user_name" id="user_name" class="form-control" required>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
+                <label for="user_email">E-mail</label>
+                <input type="email" name="user_email" id="user_email" class="form-control" required>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
+                <label for="user_password">Senha</label>
+                <input type="password" name="user_password" id="user_password" class="form-control" required>
+              </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-              <label for="user_email">E-mail</label>
-              <input type="email" name="user_email" id="user_email" class="form-control" required>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-              <label for="user_password">Senha</label>
-              <input type="password" name="user_password" id="user_password" class="form-control" required>
-            </div>
-          </div>
+          </form>
         </div>
         <div class="modal-footer d-flex align-items-center justify-content-between">
-          <button type="button" class="btn btn-success"><i class="fas fa-plus pr-1"></i> Cadastrar</button>
+          <button type="button" class="btn btn-success" onclick="cadastrar()"><i class="fas fa-plus pr-1"></i> Cadastrar</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal"><i
               class="fas fa-times pr-1"></i>Fechar</button>
         </div>
       </div>
     </div>
   </div>
+
+<script src="{{ asset('js/utils.js') }}"></script>
+<script src="{{ asset('js/usuarios/cadastrar.js') }}"></script>
 @endsection
