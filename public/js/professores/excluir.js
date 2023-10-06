@@ -1,14 +1,9 @@
-async function cadastrar() {
+async function excluir(id) {
     overlay.style.display = 'flex';
 
-    removerInputsErros();
-
-    const form = document.querySelector('#form');
-
-    const data = await formCreateRoute(window.location.origin + '/professores', form);
+    const data = await excluirRoute(window.location.origin + '/professores', id);
 
     if (!data.status) {
-        gerarInputsErrors(data.errors);
         console.log(data);
 
         Toast.fire({ icon: 'error', title: data.message }).then(() => {

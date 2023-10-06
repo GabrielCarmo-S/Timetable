@@ -20,6 +20,12 @@
           Curso
         @endslot
       @endcomponent
+
+      @component('layouts.tables.th')
+        @slot('text')
+          Ações
+        @endslot
+      @endcomponent
     @endsection
 
     @section('dataTable-tbody')
@@ -35,6 +41,13 @@
             @component('layouts.tables.td')
               @slot('text')
                 {{ $item->course_name }}
+              @endslot
+            @endcomponent
+
+            @component('layouts.tables.td')
+              @slot('text')
+                <button type="button" class="btn btn-warning"><i class="fas fa-trash-alt"></i></i></button>
+                <button type="button" class="btn btn-danger"><i class="fas fa-pencil-alt"></i></i></button>
               @endslot
             @endcomponent
           @endslot

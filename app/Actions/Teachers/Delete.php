@@ -9,7 +9,7 @@ class Delete
     public static function handle($data, $response)
     {
         try {
-            Teacher::where("teacher_id", $data->teacher_id)->delete();
+            Teacher::where("teacher_id", $data->id)->delete();
 
             return $response->send(true, null, 'Sucesso ao deletar o professor', []);
         } catch (\Throwable $th) {

@@ -5,7 +5,7 @@ async function cadastrar() {
 
     const form = document.querySelector('#form');
 
-    const data = await formCreateRoute(window.location.origin + '/professores', form);
+    const data = await formCreateRoute(window.location.origin + '/usuarios', form);
 
     if (!data.status) {
         gerarInputsErrors(data.errors);

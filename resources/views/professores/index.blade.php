@@ -19,6 +19,12 @@
             Nome
           @endslot
         @endcomponent
+
+        @component('layouts.tables.th')
+          @slot('text')
+            Ações
+          @endslot
+        @endcomponent
       @endsection
 
       @section('dataTable-tbody')
@@ -34,6 +40,15 @@
               @component('layouts.tables.td')
                 @slot('text')
                   {{ $item->teacher_name }}
+                @endslot
+              @endcomponent
+
+              @component('layouts.tables.td')
+                @slot('text')
+                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editar"><i
+                      class="fas fa-pencil-alt"></i></button>
+                  <button type="button" class="btn btn-danger" onclick="excluir({{ $item->teacher_id }})"><i
+                      class="fas fa-trash-alt"></i></button>
                 @endslot
               @endcomponent
             @endslot
@@ -72,6 +87,36 @@
     </div>
   </div>
 
+  <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar Professores</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="" id="form">
+            <div class="row d-flex">
+              <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                <label for="teacher_name">Nome</label>
+                <input type="text" name="teacher_name" id="teacher_name" class="form-control" required>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer d-flex align-items-center justify-content-between">
+          <button type="button" class="btn btn-success" onclick="editar()"><i class="fas fa-plus pr-1"></i>
+            Editar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i
+              class="fas fa-times pr-1"></i>Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="{{ asset('js/utils.js') }}"></script>
   <script src="{{ asset('js/professores/cadastrar.js') }}"></script>
+  <script src="{{ asset('js/professores/excluir.js') }}"></script>
 @endsection

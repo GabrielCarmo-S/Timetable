@@ -65,3 +65,27 @@ async function formCreateRoute(route, form) {
         return { 'status': 'error', 'message': error.message };
     }
 }
+
+
+async function excluirRoute(route, id) {
+    try {
+        let url = new URL(`${route}/excluir`);
+
+        const settings = {
+            method: 'DELETE'
+        }
+
+        const params = new URLSearchParams();
+        params.append('id', id);
+
+        url.search = params.toString();
+
+        let response = await fetch(url, settings);
+
+        const data = await response.json();
+
+        return data;
+    } catch (error) {
+        return { 'status': 'error', 'message': error.message };
+    }
+}

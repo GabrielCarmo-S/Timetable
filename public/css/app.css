@@ -55,3 +55,7 @@
 .swal2-popup.swal2-toast.swal2-icon-success.swal2-show .swal2-success-ring {
     border: .25em solid #1cc88a !important;
 }
+
+tr>td {
+    vertical-align: middle !important;
+}
