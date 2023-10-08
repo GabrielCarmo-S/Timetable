@@ -131,8 +131,8 @@
               <input type="text" name="lesson_name" id="lesson_name" class="form-control" required>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-              <label for="module_id">Modulo</label>
-              <select name="module_id" id="module_id" class="form-control" required></select>
+              <label for="module_name">Modulo</label>
+              <select name="module_name" id="module_name" class="form-control" required></select>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
               <label for="is_mandatory">Obrigatório</label>

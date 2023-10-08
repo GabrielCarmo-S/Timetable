@@ -22,9 +22,9 @@ class ClassMController extends TimetableDefaultController
 
             $data = $classe->getClassM();
 
-            return $this->response->send(true, $data->toJson(), 'Classes Encontrados com sucesso!', null);
+            return view('classes.index', ['title' => 'TimeTable - Classes', 'titleContent' => 'Listagem - Classes', 'data' => $data]);
         } catch (\Throwable $th) {
-            return $this->response->send(false, null, 'Erro ao buscar classes', $th->getMessage());
+            return view('classes.index', ['title' => 'TimeTable - Classes', 'titleContent' => 'Listagem - Classes', 'data' => []]);
         }
     }
 

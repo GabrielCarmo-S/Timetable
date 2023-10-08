@@ -22,9 +22,9 @@ class ModuleController extends TimetableDefaultController
 
             $data = $module->getModule();
 
-            return $this->response->send(true, $data->toJson(), 'Modulos Encontrados com sucesso!', null);
+            return view('modulos.index', ['title' => 'TimeTable - Modulos', 'titleContent' => 'Listagem - Modulos', 'data' => $data]);
         } catch (\Throwable $th) {
-            return $this->response->send(false, null, 'Erro ao buscar modulos', $th->getMessage());
+            return view('modulos.index', ['title' => 'TimeTable - Modulos', 'titleContent' => 'Listagem - Modulos', 'data' => []]);
         }
     }
 
