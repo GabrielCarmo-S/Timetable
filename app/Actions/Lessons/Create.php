@@ -14,7 +14,7 @@ class Create
                 'is_mandatory' => $data->is_mandatory,
                 'lesson_date' => $data->lesson_date,
                 'lesson_time' => $data->lesson_time,
-                'module_id' => $data->course_id,
+                'module_id' => $data->module_id,
             ]);
 
             return $response->send(true, null, 'Sucesso ao cadastrar lição', []);

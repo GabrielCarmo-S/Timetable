@@ -9,7 +9,7 @@ class Delete
     public static function handle($data, $response)
     {
         try {
-            Module::where("module_id", $data->module_id)->delete();
+            Module::where("module_id", $data->id)->delete();
 
             return $response->send(true, null, 'Sucesso ao deletar modulo', []);
         } catch (\Throwable $th) {

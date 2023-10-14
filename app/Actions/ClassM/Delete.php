@@ -9,7 +9,7 @@ class Delete
     public static function handle($data, $response)
     {
         try {
-            ClassM::where("class_id", $data->class_id)->delete();
+            ClassM::where("class_id", $data->id)->delete();
 
             return $response->send(true, null, 'Sucesso ao deletar classe', []);
         } catch (\Throwable $th) {

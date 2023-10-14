@@ -64,6 +64,36 @@
    <!-- Divider -->
    <hr class="sidebar-divider d-none d-md-block">
 
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Modulos
+  </div>
+
+   <!-- Nav Item - Pages Collapse Menu -->
+   <li class="nav-item">
+     <a class="nav-link" href="{{ route('modulos.get') }}">
+       <i class="fas fa-book"></i>
+       <span>Modulos</span></a>
+   </li>
+
+   <!-- Divider -->
+   <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Modulos
+    </div>
+
+   <!-- Nav Item - Pages Collapse Menu -->
+   <li class="nav-item">
+     <a class="nav-link" href="{{ route('classes.get') }}">
+     <i class="fas fa-book"></i>
+       <span>Classes</span></a>
+   </li>
+
+   <!-- Divider -->
+   <hr class="sidebar-divider d-none d-md-block">
+
    <!-- Sidebar Toggler (Sidebar) -->
    <div class="text-center d-none d-md-inline">
      <button class="rounded-circle border-0" id="sidebarToggle"></button>

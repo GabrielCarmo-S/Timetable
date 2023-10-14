@@ -6,7 +6,9 @@ use App\Actions\Lessons\Create;
 use App\Actions\Lessons\Delete;
 use App\Actions\Lessons\Update;
 use App\Http\Requests\LessonCreateRequest;
+use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Module;
 use Illuminate\Http\Request;
 
 class LessonController extends TimetableDefaultController
@@ -22,7 +24,11 @@ class LessonController extends TimetableDefaultController
 
             $data = $lesson->getLesson();
 
-            return view('licoes.index', ['title' => 'TimeTable - Lições', 'titleContent' => 'Listagem - Lições', 'data' => $data]);
+            $module = new Module();
+
+            $modules = $module->getModule();
+
+            return view('licoes.index', ['title' => 'TimeTable - Lições', 'titleContent' => 'Listagem - Lições', 'data' => $data, 'modules' => $modules]);
         } catch (\Throwable $th) {
             return view('licoes.index', ['title' => 'TimeTable - Lições', 'titleContent' => 'Listagem - Lições', 'data' => []]);
         }

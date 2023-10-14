@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
+
 Route::prefix('usuarios')->group(function () {
     Route::get('/listar', [UserController::class, 'get'])->name('usuarios.get');
     Route::get('{id}/detalhar', [UserController::class, 'getUserById'])->name('usuarios.getUserById');

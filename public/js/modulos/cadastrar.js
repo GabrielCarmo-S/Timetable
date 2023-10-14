@@ -5,10 +5,12 @@ async function cadastrar() {
 
     const form = document.querySelector('#form');
 
-    const data = await formCreateRoute(window.location.origin + '/usuarios', form);
+    const data = await formCreateRoute(window.location.origin + '/modulos', form);
 
     if (!data.status) {
         gerarInputsErrors(data.errors);
+
+        console.log(data);
 
         Toast.fire({ icon: 'error', title: data.message }).then(() => {
             overlay.style.display = 'none';

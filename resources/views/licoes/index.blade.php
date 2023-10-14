@@ -117,9 +117,10 @@
 
               @component('layouts.tables.td')
                 @slot('text')
-                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editar"><i
-                      class="fas fa-pencil-alt"></i></button>
-                  <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                  {{-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editar"><i
+                      class="fas fa-pencil-alt"></i></button> --}}
+                  <button type="button" class="btn btn-danger" onclick="excluir({{ $item->lesson_id }})"><i
+                      class="fas fa-trash-alt"></i></button>
                 @endslot
               @endcomponent
             @endslot
@@ -139,34 +140,41 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="row d-flex">
-            <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-              <label for="lesson_name">Nome</label>
-              <input type="text" name="lesson_name" id="lesson_name" class="form-control" required>
+          <form action="" id="form">
+            <div class="row d-flex">
+              <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                <label for="lesson_name">Nome</label>
+                <input type="text" name="lesson_name" id="lesson_name" class="form-control" required>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
+                <label for="module_id">Modulo</label>
+                <select name="module_id" id="module_id" class="form-control" required>
+                  @foreach ($modules as $module)
+                    <option value="{{ $module->module_id }}">{{ $module->module_name }}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
+                <label for="is_mandatory">Obrigatório</label>
+                <select name="is_mandatory" id="is_mandatory" class="form-control" required>
+                  <option value="0">Não</option>
+                  <option value="0">Sim</option>
+                </select>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
+                <label for="lesson_date">Data</label>
+                <input type="date" name="lesson_date" id="lesson_date" class="form-control" required>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
+                <label for="lesson_time">Hora</label>
+                <input type="time" name="lesson_time" id="lesson_time" class="form-control" required>
+              </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-              <label for="module_id">Modulo</label>
-              <select name="module_id" id="module_id" class="form-control" required></select>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-              <label for="is_mandatory">Obrigatório</label>
-              <select name="is_mandatory" id="is_mandatory" class="form-control" required>
-                <option value="0">Não</option>
-                <option value="0">Sim</option>
-              </select>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-              <label for="lesson_date">Data</label>
-              <input type="date" name="lesson_date" id="lesson_date" class="form-control" required>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-              <label for="lesson_time">Hora</label>
-              <input type="time" name="lesson_time" id="lesson_time" class="form-control" required>
-            </div>
-          </div>
+          </form>
         </div>
         <div class="modal-footer d-flex align-items-center justify-content-between">
-          <button type="button" class="btn btn-success"><i class="fas fa-plus pr-1"></i> Cadastrar</button>
+          <button type="button" class="btn btn-success" onclick="cadastrar()"><i class="fas fa-plus pr-1"></i>
+            Cadastrar</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal"><i
               class="fas fa-times pr-1"></i>Fechar</button>
         </div>
@@ -174,7 +182,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
+  {{-- <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -192,7 +200,9 @@
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="module_id">Modulo</label>
-                <select name="module_id" id="module_id" class="form-control" required></select>
+                <select name="module_id" id="module_id" class="form-control" required>
+
+                </select>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="is_mandatory">Obrigatório</label>
@@ -219,5 +229,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
+
+  <script src="{{ asset('js/utils.js') }}"></script>
+  <script src="{{ asset('js/licoes/cadastrar.js') }}"></script>
+  <script src="{{ asset('js/licoes/excluir.js') }}"></script>
 @endsection

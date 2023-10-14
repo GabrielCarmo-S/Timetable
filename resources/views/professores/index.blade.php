@@ -45,8 +45,8 @@
 
               @component('layouts.tables.td')
                 @slot('text')
-                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editar"><i
-                      class="fas fa-pencil-alt"></i></button>
+                  {{-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editar"><i
+                      class="fas fa-pencil-alt"></i></button> --}}
                   <button type="button" class="btn btn-danger" onclick="excluir({{ $item->teacher_id }})"><i
                       class="fas fa-trash-alt"></i></button>
                 @endslot
@@ -87,7 +87,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
+  {{-- <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -114,7 +114,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
   <script src="{{ asset('js/utils.js') }}"></script>
   <script src="{{ asset('js/professores/cadastrar.js') }}"></script>

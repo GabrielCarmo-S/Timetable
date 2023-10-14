@@ -14,7 +14,6 @@ async function cadastrar() {
         Toast.fire({ icon: 'error', title: data.message }).then(() => {
             overlay.style.display = 'none';
         });
-
         return false;
     }
 
