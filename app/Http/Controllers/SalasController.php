@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Cursos\Create;
-use App\Actions\Cursos\Delete;
-use App\Actions\Cursos\Update;
-use App\Http\Requests\CursoRequest;
-use App\Models\Curso;
+use App\Actions\Salas\Create;
+use App\Actions\Salas\Delete;
+use App\Actions\Salas\Update;
+use App\Http\Requests\SalaRequest;
+use App\Models\Sala;
 use Illuminate\Http\Request;
 
-class CursosController extends TimetableDefaultController
+class SalasController extends TimetableDefaultController
 {
   public function construct()
   {
@@ -18,30 +18,30 @@ class CursosController extends TimetableDefaultController
   public function get(Request $request)
   {
     try {
-      $curso = new Curso();
+      $lesson = new Sala();
 
-      $data = $curso->getCursos();
+      $data = $lesson->getSalas();
 
-      return view('cursos.index', ['title' => 'Instituto Mondelli de Odontologia - Cursos', 'titleContent' => 'Listagem - Cursos', 'data' => $data]);
+      return view('salas.index', ['title' => 'Instituto Mondelli de Odontologia - Sala', 'titleContent' => 'Listagem - Sala', 'data' => $data,]);
     } catch (\Throwable $th) {
-      return view('cursos.index', ['title' => 'Instituto Mondelli de Odontologia - Cursos', 'titleContent' => 'Listagem - Cursos', 'data' => []]);
+      return view('salas.index', ['title' => 'Instituto Mondelli de Odontologia - Sala', 'titleContent' => 'Listagem - Sala', 'data' => []]);
     }
   }
 
-  public function getCursosById($id)
+  public function getSalaById($id)
   {
     try {
-      $curso = new Curso();
+      $lesson = new Sala();
 
-      $data = $curso->getCursoById($id);
+      $data = $lesson->getSalaById($id);
 
-      return $this->response->send(true, $data, 'Curso Encontrado com sucesso!', null);
+      return $this->response->send(true, $data, 'Sala Encontrado com sucesso!', null);
     } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao buscar curso' . $th->getMessage());
+      return $this->response->send(false, null, 'Erro ao buscar sala' . $th->getMessage());
     }
   }
 
-  public function create(CursoRequest $request)
+  public function create(SalaRequest $request)
   {
     try {
       $data = Create::handle($request, $this->response);
@@ -52,7 +52,7 @@ class CursosController extends TimetableDefaultController
 
       return $this->response->send(true, null, $data->message, $data->errors);
     } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao cadastrar curso' . $th->getMessage());
+      return $this->response->send(false, null, 'Erro ao cadastrar sala' . $th->getMessage());
     }
   }
 
@@ -67,7 +67,7 @@ class CursosController extends TimetableDefaultController
 
       return $this->response->send(true, null, $data->message, $data->errors);
     } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao atualizar curso' . $th->getMessage());
+      return $this->response->send(false, null, 'Erro ao atualizar sala' . $th->getMessage());
     }
   }
 
@@ -82,7 +82,7 @@ class CursosController extends TimetableDefaultController
 
       return $this->response->send(true, null, $data->message, $data->errors);
     } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao deletar curso' . $th->getMessage());
+      return $this->response->send(false, null, 'Erro ao deletar sala' . $th->getMessage());
     }
   }
 }

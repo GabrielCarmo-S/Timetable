@@ -59,3 +59,23 @@
 tr>td {
     vertical-align: middle !important;
 }
+
+#logoMini {
+    display: none;
+}
+
+.sidebar {
+    background-color: #860518;
+    background-image: linear-gradient(180deg, #860518 10%, #b90621 100%);
+    background-size: cover;
+}
+
+@media(max-width:768px) {
+    #accordionSidebar #logoMini {
+        display: flex;
+    }
+
+    #accordionSidebar #logoFull {
+        display: none;
+    }
+}

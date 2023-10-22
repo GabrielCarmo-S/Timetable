@@ -1,9 +1,11 @@
- <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+ <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
-     <div class="sidebar-brand-icon rotate-n-15">
-       TT
+     <div class="sidebar-brand-icon" id="logoMini">
+       <img title="Logo da Empresa" height="26px" width="100%" src="{{ asset('img/imo.svg') }}">
      </div>
-     <div class="sidebar-brand-text mx-3">TimeTable</div>
+     <div class="sidebar-brand-text mx-3" id="LogoFull">
+       <img title="Logo da Empresa" height="40px" width="100%" src="{{ asset('img/imo_total.svg') }}">
+     </div>
    </a>
 
    <!-- Divider -->
@@ -36,14 +38,14 @@
 
    <!-- Heading -->
    <div class="sidebar-heading">
-     Professores
+     Cursos
    </div>
 
    <!-- Nav Item - Pages Collapse Menu -->
    <li class="nav-item">
-     <a class="nav-link" href="{{ route('professores.get') }}">
-       <i class="fas fa-user-graduate"></i>
-       <span>Professores</span></a>
+     <a class="nav-link" href="{{ route('cursos.get') }}">
+       <i class="fas fa-book"></i>
+       <span>Cursos</span></a>
    </li>
 
    <!-- Divider -->
@@ -51,44 +53,14 @@
 
    <!-- Heading -->
    <div class="sidebar-heading">
-     Lições
+     Aulas
    </div>
 
    <!-- Nav Item - Pages Collapse Menu -->
    <li class="nav-item">
-     <a class="nav-link" href="{{ route('licoes.get') }}">
+     <a class="nav-link" href="{{ route('aulas.get') }}">
        <i class="fas fa-book"></i>
-       <span>Lições</span></a>
-   </li>
-
-   <!-- Divider -->
-   <hr class="sidebar-divider d-none d-md-block">
-
-  <!-- Heading -->
-  <div class="sidebar-heading">
-    Modulos
-  </div>
-
-   <!-- Nav Item - Pages Collapse Menu -->
-   <li class="nav-item">
-     <a class="nav-link" href="{{ route('modulos.get') }}">
-       <i class="fas fa-book"></i>
-       <span>Modulos</span></a>
-   </li>
-
-   <!-- Divider -->
-   <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-      Modulos
-    </div>
-
-   <!-- Nav Item - Pages Collapse Menu -->
-   <li class="nav-item">
-     <a class="nav-link" href="{{ route('classes.get') }}">
-     <i class="fas fa-book"></i>
-       <span>Classes</span></a>
+       <span>Aulas</span></a>
    </li>
 
    <!-- Divider -->

@@ -7,9 +7,7 @@ async function cadastrar() {
 
     const formData = new FormData(form);
 
-    formData.append('foto', form.querySelector('input[name="foto"]').files[0]);
-
-    const data = await formCreateRoute(window.location.origin + '/usuarios', formData);
+    const data = await formCreateRoute(window.location.origin + '/cursos', formData);
 
     if (!data.status) {
         gerarInputsErrors(data.errors);

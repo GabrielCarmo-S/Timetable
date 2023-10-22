@@ -45,16 +45,14 @@ function gerarInputsErrors(errors) {
 
 // document.querySelector('#form');
 
-async function formCreateRoute(route, form) {
+async function formCreateRoute(route, formData) {
     try {
         let url = new URL(`${route}/incluir`);
 
         const settings = {
-            method: 'POST'
+            method: 'POST',
+            body: formData,
         }
-
-        const formData = new FormData(form);
-        url.search = new URLSearchParams(formData);
 
         let response = await fetch(url, settings);
 

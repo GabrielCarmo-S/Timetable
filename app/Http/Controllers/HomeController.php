@@ -11,7 +11,7 @@ class HomeController extends TimetableDefaultController
 
     public function construct()
     {
-        $this->title = "TimeTable";
+        $this->title = "Instituto Mondelli de Odontologia";
         $this->titleContent = "Home";
     }
 

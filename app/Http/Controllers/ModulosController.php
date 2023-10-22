@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Cursos\Create;
-use App\Actions\Cursos\Delete;
-use App\Actions\Cursos\Update;
-use App\Http\Requests\CursoRequest;
-use App\Models\Curso;
+use App\Actions\Modulos\Create;
+use App\Actions\Modulos\Delete;
+use App\Actions\Modulos\Update;
+use App\Http\Requests\ModuloRequest;
+use App\Models\Modulo;
 use Illuminate\Http\Request;
 
-class CursosController extends TimetableDefaultController
+class ModulosController extends TimetableDefaultController
 {
   public function construct()
   {
@@ -18,30 +18,30 @@ class CursosController extends TimetableDefaultController
   public function get(Request $request)
   {
     try {
-      $curso = new Curso();
+      $module = new Modulo();
 
-      $data = $curso->getCursos();
+      $data = $module->getModulos();
 
-      return view('cursos.index', ['title' => 'Instituto Mondelli de Odontologia - Cursos', 'titleContent' => 'Listagem - Cursos', 'data' => $data]);
+      return view('modulos.index', ['title' => 'Instituto Mondelli de Odontologia - Modulos', 'titleContent' => 'Listagem - Modulos', 'data' => $data]);
     } catch (\Throwable $th) {
-      return view('cursos.index', ['title' => 'Instituto Mondelli de Odontologia - Cursos', 'titleContent' => 'Listagem - Cursos', 'data' => []]);
+      return view('modulos.index', ['title' => 'Instituto Mondelli de Odontologia - Modulos', 'titleContent' => 'Listagem - Modulos', 'data' => []]);
     }
   }
 
-  public function getCursosById($id)
+  public function getModuloById($id)
   {
     try {
-      $curso = new Curso();
+      $module = new Modulo();
 
-      $data = $curso->getCursoById($id);
+      $data = $module->getModuloById($id);
 
-      return $this->response->send(true, $data, 'Curso Encontrado com sucesso!', null);
+      return $this->response->send(true, $data, 'Modulo Encontrado com sucesso!', null);
     } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao buscar curso' . $th->getMessage());
+      return $this->response->send(false, null, 'Erro ao buscar modulo' . $th->getMessage());
     }
   }
 
-  public function create(CursoRequest $request)
+  public function create(ModuloRequest $request)
   {
     try {
       $data = Create::handle($request, $this->response);
@@ -52,7 +52,7 @@ class CursosController extends TimetableDefaultController
 
       return $this->response->send(true, null, $data->message, $data->errors);
     } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao cadastrar curso' . $th->getMessage());
+      return $this->response->send(false, null, 'Erro ao cadastrar modulo' . $th->getMessage());
     }
   }
 
@@ -67,7 +67,7 @@ class CursosController extends TimetableDefaultController
 
       return $this->response->send(true, null, $data->message, $data->errors);
     } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao atualizar curso' . $th->getMessage());
+      return $this->response->send(false, null, 'Erro ao atualizar modulo' . $th->getMessage());
     }
   }
 
@@ -82,7 +82,7 @@ class CursosController extends TimetableDefaultController
 
       return $this->response->send(true, null, $data->message, $data->errors);
     } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao deletar curso' . $th->getMessage());
+      return $this->response->send(false, null, 'Erro ao deletar modulo' . $th->getMessage());
     }
   }
 }

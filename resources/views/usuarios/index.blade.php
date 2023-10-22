@@ -10,25 +10,37 @@
       @section('dataTable-thead')
         @component('layouts.tables.th')
           @slot('text')
-            ID
+            Foto
           @endslot
         @endcomponent
 
         @component('layouts.tables.th')
           @slot('text')
-            Nome
+            Prefixo
           @endslot
         @endcomponent
 
         @component('layouts.tables.th')
           @slot('text')
-            Email
+            Nome Completo
           @endslot
         @endcomponent
 
         @component('layouts.tables.th')
           @slot('text')
-            Level Permissão
+            Nome Abrev
+          @endslot
+        @endcomponent
+
+        @component('layouts.tables.th')
+          @slot('text')
+            E-mail
+          @endslot
+        @endcomponent
+
+        @component('layouts.tables.th')
+          @slot('text')
+            Profissão
           @endslot
         @endcomponent
 
@@ -45,25 +57,39 @@
             @slot('text')
               @component('layouts.tables.td')
                 @slot('text')
-                  {{ $item->user_id }}
+                  <img width="36px" height="100%" class="img-profile rounded-circle"
+                    src="{{ $item->foto == null ? asset('img/undraw_profile.svg') : Storage::url($item->foto) }}" alt="Foto do Usuário"
+                    style="object-position: center center; object-fit: cover;">
                 @endslot
               @endcomponent
 
               @component('layouts.tables.td')
                 @slot('text')
-                  {{ $item->user_name }}
+                  {{ $item->prefixo }}
                 @endslot
               @endcomponent
 
               @component('layouts.tables.td')
                 @slot('text')
-                  {{ $item->user_email }}
+                  {{ $item->nome_completo }}
                 @endslot
               @endcomponent
 
               @component('layouts.tables.td')
                 @slot('text')
-                  {{ $item->user_level }}
+                  {{ $item->nome_abrev }}
+                @endslot
+              @endcomponent
+
+              @component('layouts.tables.td')
+                @slot('text')
+                  {{ $item->email }}
+                @endslot
+              @endcomponent
+
+              @component('layouts.tables.td')
+                @slot('text')
+                  {{ $item->level == 0 ? 'Professor' : 'Coordenador' }}
                 @endslot
               @endcomponent
 
@@ -71,7 +97,7 @@
                 @slot('text')
                   {{-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editar"><i
                       class="fas fa-pencil-alt"></i></button> --}}
-                  <button type="button" class="btn btn-danger" onclick="excluir({{ $item->user_id }})"><i
+                  <button type="button" class="btn btn-danger" onclick="excluir({{ $item->id }})"><i
                       class="fas fa-trash-alt"></i></button>
                 @endslot
               @endcomponent
@@ -92,26 +118,39 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="" id="form">
+          <form action="" id="form" enctype="multipart/form-data">
             <div class="row d-flex">
-              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-                <label for="user_name">Nome</label>
-                <input type="text" name="user_name" id="user_name" class="form-control" required>
+              <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                <label for="foto">Foto</label>
+                <input class="form-control" type="file"name="foto" id="foto" accept="image/png,image/jpeg"
+                  required>
               </div>
-              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-                <label for="user_level">Permissão do Usuário</label>
-                <select class="form-control" id="user_level" name="user_level">
-                  <option selected value="0">Usuário Comum</option>
-                  <option value="1">Administrador</option>
+              <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
+                <label for="prefixo">Prefixo</label>
+                <input type="text" name="prefixo" id="prefixo" class="form-control" required>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
+                <label for="nome_completo">Nome Completo</label>
+                <input type="text" name="nome_completo" id="nome_completo" class="form-control" required>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
+                <label for="nome_abrev">Nome Abrev</label>
+                <input type="text" name="nome_abrev" id="nome_abrev" class="form-control" required>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
+                <label for="level">Profissão</label>
+                <select class="form-control" id="level" name="level">
+                  <option selected value="0">Professor</option>
+                  <option value="1">Coordenador</option>
                 </select>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-                <label for="user_email">E-mail</label>
-                <input type="email" name="user_email" id="user_email" class="form-control" required>
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email" class="form-control" required>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-                <label for="user_password">Senha</label>
-                <input type="password" name="user_password" id="user_password" class="form-control" required>
+                <label for="password">Senha</label>
+                <input type="password" name="password" id="password" class="form-control" required>
               </div>
             </div>
           </form>
@@ -143,12 +182,12 @@
                 <input type="text" name="user_name" id="user_name" class="form-control" required>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-                <label for="user_email">E-mail</label>
-                <input type="email" name="user_email" id="user_email" class="form-control" required>
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email" class="form-control" required>
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-                <label for="user_password">Senha</label>
-                <input type="password" name="user_password" id="user_password" class="form-control" required>
+                <label for="password">Senha</label>
+                <input type="password" name="password" id="password" class="form-control" required>
               </div>
             </div>
           </form>
