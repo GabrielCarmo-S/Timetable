@@ -95,10 +95,12 @@
 
               @component('layouts.tables.td')
                 @slot('text')
-                  {{-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editar"><i
-                      class="fas fa-pencil-alt"></i></button> --}}
-                  <button type="button" class="btn btn-danger" onclick="excluir({{ $item->id }})"><i
-                      class="fas fa-trash-alt"></i></button>
+                  <button type="button" class="btn btn-warning" onclick="editar({{ $item->id }})">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger" onclick="excluir({{ $item->id }})">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
                 @endslot
               @endcomponent
             @endslot
@@ -120,7 +122,11 @@
         <div class="modal-body">
           <form action="" id="form" enctype="multipart/form-data">
             <div class="row d-flex">
-              <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+              <div class="col-sm-12 col-md-12 col-lg-12 mb-3 d-none">
+                <label for="id">Id</label>
+                <input type="text" name="id" id="id" class="form-control" required>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12 mb-3" id="divFoto">
                 <label for="foto">Foto</label>
                 <input class="form-control" type="file"name="foto" id="foto" accept="image/png,image/jpeg"
                   required>
@@ -148,7 +154,7 @@
                 <label for="email">E-mail</label>
                 <input type="email" name="email" id="email" class="form-control" required>
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
+              <div class="col-sm-6 col-md-6 col-lg-6 mb-3" id="divPassword">
                 <label for="password">Senha</label>
                 <input type="password" name="password" id="password" class="form-control" required>
               </div>
@@ -156,52 +162,24 @@
           </form>
         </div>
         <div class="modal-footer d-flex align-items-center justify-content-between">
-          <button type="button" class="btn btn-success" onclick="cadastrar()"><i class="fas fa-plus pr-1"></i>
-            Cadastrar</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i
-              class="fas fa-times pr-1"></i>Fechar</button>
+          <button type="button" class="btn btn-success" id="salvarCadastrarButton" onclick="cadastrar()">
+            <i class="fas fa-plus pr-1"></i>
+            Cadastrar
+          </button>
+
+          <button type="button" class="btn btn-success d-none" id="salvarEdicaoButton" onclick="salvarEdicao()">
+            <i class="fas fa-pencil-alt"></i>
+            Editar
+          </button>
+
+          <button type="button" class="btn btn-danger" onclick="fecharModal()">
+            <i class="fas fa-times pr-1"></i>Fechar
+          </button>
         </div>
       </div>
     </div>
   </div>
-  {{--
-  <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="editar" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Editar Usuários</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="" id="form">
-            <div class="row d-flex">
-              <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-                <label for="user_name">Nome</label>
-                <input type="text" name="user_name" id="user_name" class="form-control" required>
-              </div>
-              <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-                <label for="email">E-mail</label>
-                <input type="email" name="email" id="email" class="form-control" required>
-              </div>
-              <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
-                <label for="password">Senha</label>
-                <input type="password" name="password" id="password" class="form-control" required>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer d-flex align-items-center justify-content-between">
-          <button type="button" class="btn btn-success"><i class="fas fa-plus pr-1"></i> Editar</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i
-              class="fas fa-times pr-1"></i>Fechar</button>
-        </div>
-      </div>
-    </div>
-  </div> --}}
 
   <script src="{{ asset('js/utils.js') }}"></script>
-  <script src="{{ asset('js/usuarios/cadastrar.js') }}"></script>
-  <script src="{{ asset('js/usuarios/excluir.js') }}"></script>
+  <script src="{{ asset('js/usuarios/index.js') }}"></script>
 @endsection

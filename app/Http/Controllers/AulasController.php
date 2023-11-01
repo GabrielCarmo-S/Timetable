@@ -12,78 +12,80 @@ use Illuminate\Support\Carbon;
 
 class AulasController extends TimetableDefaultController
 {
-  public function construct()
-  {
-  }
-
-  public function get(Request $request)
-  {
-    try {
-      $aula = new Aula();
-
-      $data = $aula->getAulas();
-
-      return view('aulas.index', ['title' => 'Instituto Mondelli de Odontologia - Aulas', 'titleContent' => 'Listagem - Aulas', 'data' => $data]);
-    } catch (\Throwable $th) {
-      return view('aulas.index', ['title' => 'Instituto Mondelli de Odontologia - Aulas', 'titleContent' => 'Listagem - Aulas', 'data' => []]);
+    public function construct()
+    {
     }
-  }
 
-  public function getAulaById($id)
-  {
-    try {
-      $aula = new Aula();
+    public function get(Request $request)
+    {
+        try {
+            $aula = new Aula();
 
-      $data = $aula->getAulaById($id);
+            $data = $aula->getAulas();
 
-      return $this->response->send(true, $data, 'Aula Encontrada com sucesso!', null);
-    } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao buscar aula' . $th->getMessage());
+            return view('aulas.index', ['title' => 'Instituto Mondelli de Odontologia - Aulas', 'titleContent' => 'Listagem - Aulas', 'data' => $data]);
+        } catch (\Throwable $th) {
+            return view('aulas.index', ['title' => 'Instituto Mondelli de Odontologia - Aulas', 'titleContent' => 'Listagem - Aulas', 'data' => []]);
+        }
     }
-  }
 
-  public function create(AulaRequest $request)
-  {
-    try {
-      $data = Create::handle($request, $this->response);
+    public function getAulaById($id)
+    {
+        try {
+            $aula = new Aula();
 
-      if (!$data->status) {
-        return $this->response->send(false, null, $data->message, $data->errors);
-      }
+            $data = $aula->getAulaById($id);
 
-      return $this->response->send(true, null, $data->message, $data->errors);
-    } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao cadastrar Aula' . $th->getMessage());
+            return $this->response->send(true, $data, 'Aula Encontrada com sucesso!', null);
+        } catch (\Throwable $th) {
+            return $this->response->send(false, null, 'Erro ao buscar aula' . $th->getMessage());
+        }
     }
-  }
 
-  public function update(Request $request)
-  {
-    try {
-      $data = Update::handle($request, $this->response);
+    public function create(AulaRequest $request)
+    {
+        try {
+            $data = Create::handle($request, $this->response);
 
-      if (!$data->status) {
-        return $this->response->send(false, null, $data->message, $data->errors);
-      }
+            if (!$data->status) {
+                return $this->response->send(false, null, $data->message, $data->errors);
+            }
 
-      return $this->response->send(true, null, $data->message, $data->errors);
-    } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao atualizar aula' . $th->getMessage());
+            return $this->response->send(true, null, $data->message, $data->errors);
+        } catch (\Throwable $th) {
+            return $this->response->send(false, null, 'Erro ao cadastrar Aula' . $th->getMessage());
+        }
     }
-  }
 
-  public function delete(Request $request)
-  {
-    try {
-      $data = Delete::handle($request, $this->response);
+    public function update(Request $request)
+    {
+        try {
+            $rest = $request->except('_method');
 
-      if (!$data->status) {
-        return $this->response->send(false, null, $data->message, $data->errors);
-      }
+            $data = Update::handle($rest, $this->response);
 
-      return $this->response->send(true, null, $data->message, $data->errors);
-    } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao deletar aula' . $th->getMessage());
+            if (!$data->status) {
+                return $this->response->send(false, null, $data->message, $data->errors);
+            }
+
+            return $this->response->send(true, null, $data->message, $data->errors);
+        } catch (\Throwable $th) {
+            return $this->response->send(false, null, 'Erro ao atualizar aula' . $th->getMessage());
+        }
     }
-  }
+
+    public function delete(Request $request)
+    {
+        try {
+            $data = Delete::handle($request, $this->response);
+
+            if (!$data->status) {
+                return $this->response->send(false, null, $data->message, $data->errors);
+            }
+
+            return $this->response->send(true, null, $data->message, $data->errors);
+        } catch (\Throwable $th) {
+            return $this->response->send(false, null, 'Erro ao deletar aula' . $th->getMessage());
+        }
+    }
 }

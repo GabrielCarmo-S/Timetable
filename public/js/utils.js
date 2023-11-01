@@ -64,6 +64,27 @@ async function formCreateRoute(route, formData) {
     }
 }
 
+async function formUpdateRoute(route, formData) {
+    try {
+        let url = new URL(`${route}/alterar`);
+
+        formData.append('_method', 'PUT');
+
+        const settings = {
+            method: 'POST',
+            body: formData,
+        }
+
+        let response = await fetch(url, settings);
+
+        const data = await response.json();
+
+        return data;
+    } catch (error) {
+        return { 'status': 'error', 'message': error.message };
+    }
+}
+
 
 async function excluirRoute(route, id) {
     try {
@@ -79,6 +100,20 @@ async function excluirRoute(route, id) {
         url.search = params.toString();
 
         let response = await fetch(url, settings);
+
+        const data = await response.json();
+
+        return data;
+    } catch (error) {
+        return { 'status': 'error', 'message': error.message };
+    }
+}
+
+async function getByIdRoute(route, id) {
+    try {
+        let url = new URL(`${route}/${id}/detalhar`);
+
+        let response = await fetch(url);
 
         const data = await response.json();
 

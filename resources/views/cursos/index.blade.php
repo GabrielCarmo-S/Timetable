@@ -46,9 +46,12 @@
 
               @component('layouts.tables.td')
                 @slot('text')
-                  <button type="button" class="btn btn-danger" onclick="excluir({{ $item->id }})"><i
-                      class="fas fa-trash-alt"></i></button>
-                  {{-- <button type="button" class="btn btn-danger"><i class="fas fa-pencil-alt"></i></i></button> --}}
+                  <button type="button" class="btn btn-warning" onclick="editar({{ $item->id }})">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger" onclick="excluir({{ $item->id }})">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
                 @endslot
               @endcomponent
             @endslot
@@ -70,6 +73,10 @@
         <div class="modal-body">
           <form action="" id="form">
             <div class="row d-flex">
+              <div class="col-sm-12 col-md-12 col-lg-12 mb-3 d-none">
+                <label for="id">Id</label>
+                <input type="text" name="id" id="id" class="form-control" required>
+              </div>
               <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome" class="form-control" required>
@@ -78,16 +85,24 @@
           </form>
         </div>
         <div class="modal-footer d-flex align-items-center justify-content-between">
-          <button type="button" class="btn btn-success" onclick="cadastrar()"><i class="fas fa-plus pr-1"></i>
-            Cadastrar</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i
-              class="fas fa-times pr-1"></i>Fechar</button>
+          <button type="button" class="btn btn-success" id="salvarCadastrarButton" onclick="cadastrar()">
+            <i class="fas fa-plus pr-1"></i>
+            Cadastrar
+          </button>
+
+          <button type="button" class="btn btn-success d-none" id="salvarEdicaoButton" onclick="salvarEdicao()">
+            <i class="fas fa-pencil-alt"></i>
+            Editar
+          </button>
+
+          <button type="button" class="btn btn-danger" onclick="fecharModal()">
+            <i class="fas fa-times pr-1"></i>Fechar
+          </button>
         </div>
       </div>
     </div>
   </div>
 
   <script src="{{ asset('js/utils.js') }}"></script>
-  <script src="{{ asset('js/cursos/cadastrar.js') }}"></script>
-  <script src="{{ asset('js/cursos/excluir.js') }}"></script>
+  <script src="{{ asset('js/cursos/index.js') }}"></script>
 @endsection

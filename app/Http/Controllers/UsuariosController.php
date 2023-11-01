@@ -11,78 +11,80 @@ use Illuminate\Http\Request;
 
 class UsuariosController extends TimetableDefaultController
 {
-  public function construct()
-  {
-  }
-
-  public function get(Request $request)
-  {
-    try {
-      $user = new Usuario();
-
-      $data = $user->getUsuarios();
-
-      return view('usuarios.index', ['title' => 'Instituto Mondelli de Odontologia - Usuários', 'titleContent' => 'Listagem - Usuários', 'data' => $data]);
-    } catch (\Throwable $th) {
-      return view('usuarios.index', ['title' => 'Instituto Mondelli de Odontologia - Usuários', 'titleContent' => 'Listagem - Usuários', 'data' => []]);
+    public function construct()
+    {
     }
-  }
 
-  public function getUsuarioById($id)
-  {
-    try {
-      $user = new Usuario();
+    public function get(Request $request)
+    {
+        try {
+            $user = new Usuario();
 
-      $data = $user->getUsuarioById($id);
+            $data = $user->getUsuarios();
 
-      return $this->response->send(true, $data, 'Usuario Encontrado com sucesso!', null);
-    } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao buscar usuário' . $th->getMessage());
+            return view('usuarios.index', ['title' => 'Instituto Mondelli de Odontologia - Usuários', 'titleContent' => 'Listagem - Usuários', 'data' => $data]);
+        } catch (\Throwable $th) {
+            return view('usuarios.index', ['title' => 'Instituto Mondelli de Odontologia - Usuários', 'titleContent' => 'Listagem - Usuários', 'data' => []]);
+        }
     }
-  }
 
-  public function create(UsuarioRequest $request)
-  {
-    try {
-      $data = Create::handle($request, $this->response);
+    public function getUsuarioById($id)
+    {
+        try {
+            $user = new Usuario();
 
-      if (!$data->status) {
-        return $this->response->send(false, null, $data->message, $data->errors);
-      }
+            $data = $user->getUsuarioById($id);
 
-      return $this->response->send(true, null, $data->message, $data->errors);
-    } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao cadastrar usuário' . $th->getMessage());
+            return $this->response->send(true, $data, 'Usuario Encontrado com sucesso!', null);
+        } catch (\Throwable $th) {
+            return $this->response->send(false, null, 'Erro ao buscar usuário' . $th->getMessage());
+        }
     }
-  }
 
-  public function update(Request $request)
-  {
-    try {
-      $data = Update::handle($request, $this->response);
+    public function create(UsuarioRequest $request)
+    {
+        try {
+            $data = Create::handle($request, $this->response);
 
-      if (!$data->status) {
-        return $this->response->send(false, null, $data->message, $data->errors);
-      }
+            if (!$data->status) {
+                return $this->response->send(false, null, $data->message, $data->errors);
+            }
 
-      return $this->response->send(true, null, $data->message, $data->errors);
-    } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao atualizar usuário' . $th->getMessage());
+            return $this->response->send(true, null, $data->message, $data->errors);
+        } catch (\Throwable $th) {
+            return $this->response->send(false, null, 'Erro ao cadastrar usuário' . $th->getMessage());
+        }
     }
-  }
 
-  public function delete(Request $request)
-  {
-    try {
-      $data = Delete::handle($request, $this->response);
+    public function update(Request $request)
+    {
+        try {
+            $rest = $request->except('_method', 'foto', 'password');
 
-      if (!$data->status) {
-        return $this->response->send(false, null, $data->message, $data->errors);
-      }
+            $data = Update::handle($rest, $this->response);
 
-      return $this->response->send(true, null, $data->message, $data->errors);
-    } catch (\Throwable $th) {
-      return $this->response->send(false, null, 'Erro ao deletar usuário' . $th->getMessage());
+            if (!$data->status) {
+                return $this->response->send(false, null, $data->message, $data->errors);
+            }
+
+            return $this->response->send(true, null, $data->message, $data->errors);
+        } catch (\Throwable $th) {
+            return $this->response->send(false, null, 'Erro ao atualizar usuário' . $th->getMessage());
+        }
     }
-  }
+
+    public function delete(Request $request)
+    {
+        try {
+            $data = Delete::handle($request, $this->response);
+
+            if (!$data->status) {
+                return $this->response->send(false, null, $data->message, $data->errors);
+            }
+
+            return $this->response->send(true, null, $data->message, $data->errors);
+        } catch (\Throwable $th) {
+            return $this->response->send(false, null, 'Erro ao deletar usuário' . $th->getMessage());
+        }
+    }
 }
