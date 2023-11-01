@@ -75,10 +75,6 @@ async function salvarEdicao() {
     document.getElementById("salvarCadastrarButton").classList.remove("d-none");
     document.getElementById("salvarEdicaoButton").classList.add("d-none");
 
-    const divFoto = document.getElementById('divFoto');
-
-    divFoto.classList.add('d-none');
-
     return true;
 }
 

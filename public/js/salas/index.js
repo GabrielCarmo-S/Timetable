@@ -7,7 +7,7 @@ async function cadastrar() {
 
     const formData = new FormData(form);
 
-    const data = await formCreateRoute(window.location.origin + '/cursos', formData);
+    const data = await formCreateRoute(window.location.origin + '/salas', formData);
 
     if (!data.status) {
         gerarInputsErrors(data.errors);
@@ -33,7 +33,7 @@ async function editar(id) {
 
     removerDadosModal();
 
-    const data = await getByIdRoute(window.location.origin + '/cursos', id);
+    const data = await getByIdRoute(window.location.origin + '/salas', id);
 
     if (!data.status) {
         Toast.fire({ icon: 'error', title: data.message }).then(() => {
@@ -56,7 +56,7 @@ async function salvarEdicao() {
     const form = document.querySelector('#form');
     const formData = new FormData(form);
 
-    const data = await formUpdateRoute(window.location.origin + '/cursos', formData);
+    const data = await formUpdateRoute(window.location.origin + '/salas', formData);
 
     if (!data.status) {
         gerarInputsErrors(data.errors);
@@ -109,7 +109,7 @@ function removerDadosModal() {
 async function excluir(id) {
     overlay.style.display = 'flex';
 
-    const data = await excluirRoute(window.location.origin + '/cursos', id);
+    const data = await excluirRoute(window.location.origin + '/salas', id);
 
     if (!data.status) {
         console.log(data);

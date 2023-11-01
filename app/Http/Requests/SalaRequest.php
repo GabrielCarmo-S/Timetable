@@ -11,9 +11,9 @@ class SalaRequest extends DefaultRequest
             'nome.required'            => 'Obrigatório.',
             'nome.min'                 => 'Minímo de 5 caracteres.',
             'nome.max'                 => 'Máximo 255 de caracteres.',
-            'data.required'            => 'Obrigatório',
-            'inicio.required'          => 'Obrigatório',
-            'termino.required'         => 'Obrigatório',
+            // 'data.required'            => 'Obrigatório',
+            // 'inicio.required'          => 'Obrigatório',
+            // 'termino.required'         => 'Obrigatório',
         ];
     }
 
@@ -21,9 +21,9 @@ class SalaRequest extends DefaultRequest
     {
         return [
             'nome'                  => 'required|min:5|max:255',
-            'data'                  => 'required',
-            'inicio'                => 'required',
-            'termino'               => 'required',
+            // 'data'                  => 'required',
+            // 'inicio'                => 'required',
+            // 'termino'               => 'required',
         ];
     }
 }

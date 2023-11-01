@@ -49,6 +49,20 @@
    </li>
 
    <!-- Divider -->
+   <hr class="sidebar-divider d-none d-md-block">
+
+   <div class="sidebar-heading">
+     Salas
+   </div>
+
+   <!-- Nav Item - Pages Collapse Menu -->
+   <li class="nav-item">
+     <a class="nav-link" href="{{ route('salas.get') }}">
+       <i class="fas fa-home"></i>
+       <span>Salas</span></a>
+   </li>
+
+   <!-- Divider -->
    <hr class="sidebar-divider">
 
    <!-- Heading -->
