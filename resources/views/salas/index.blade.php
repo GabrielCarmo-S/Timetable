@@ -16,6 +16,18 @@
 
         @component('layouts.tables.th')
           @slot('text')
+            Número
+          @endslot
+        @endcomponent
+
+        @component('layouts.tables.th')
+          @slot('text')
+            Tipo de Sala
+          @endslot
+        @endcomponent
+
+        @component('layouts.tables.th')
+          @slot('text')
             Ações
           @endslot
         @endcomponent
@@ -28,6 +40,16 @@
               @component('layouts.tables.td')
                 @slot('text')
                   {{ $item->nome }}
+                @endslot
+              @endcomponent
+              @component('layouts.tables.td')
+                @slot('text')
+                  {{ $item->numero }}
+                @endslot
+              @endcomponent
+              @component('layouts.tables.td')
+                @slot('text')
+                  {{ $item->tiposala }}
                 @endslot
               @endcomponent
 
@@ -64,9 +86,22 @@
                 <label for="id">Id</label>
                 <input type="text" name="id" id="id" class="form-control" required>
               </div>
-              <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+              <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome" class="form-control" required>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+                <label for="numero">Número</label>
+                <input type="text" name="numero" id="numero" class="form-control" required>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                <label for="tiposala">Tipo da Sala</label>
+                <select class="form-control" id="tiposala" name="tiposala">
+                  <option selected value="0">Selecione</option>
+                  <option value="1">Laboratorio</option>
+                  <option value="2">Sala teórica</option>
+                  <option value="3">Clinica</option>
+                </select>
               </div>
             </div>
           </form>
